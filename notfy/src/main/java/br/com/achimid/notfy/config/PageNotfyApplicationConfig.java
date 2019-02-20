@@ -7,7 +7,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.context.WebApplicationContext;
 
 @Slf4j
 @Configuration
@@ -19,6 +22,7 @@ public class PageNotfyApplicationConfig {
     @Value("${webclient.config.javascript.timeout}") private int javascriptTimeout;
 
     @Bean
+    @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public WebClient getWebClient(){
         WebClient browser = new WebClient();
 
