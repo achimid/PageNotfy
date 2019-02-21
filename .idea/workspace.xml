@@ -2,19 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d00dc301-e020-4657-8d68-977f7ba61f6f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/notfy/.gitignore" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/build.gradle" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/gradle/wrapper/gradle-wrapper.jar" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/gradle/wrapper/gradle-wrapper.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/gradlew" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/gradlew.bat" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/settings.gradle" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/main/java/br/com/achimid/notfy/PageNotfyApplication.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/main/java/br/com/achimid/notfy/config/PageNotfyApplicationConfig.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/main/java/br/com/achimid/notfy/controller/TestController.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/main/java/br/com/achimid/notfy/service/ScraulerService.java" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/main/resources/application.properties" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/notfy/src/test/java/br/com/achimid/notfy/PageNotfyApplicationTests.java" afterPath="" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/config/ThymeleafConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlConfig.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlRequest.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlResponse.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/JavascriptResult.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/mail/GenericMailTemplate.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/mail/IMailTemplate.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/mail/MailModel.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/model/DocPage.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/repository/DocPageRepository.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/CrawlerService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/DocPageService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/EmailService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/JobsService.java" />
+      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/templates/mail/avisoTemplate.html" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.bin" />
+      <change beforePath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.10.2/fileHashes/fileHashes.lock" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/notfy_main.iml" afterPath="$PROJECT_DIR$/.idea/modules/notfy_main.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/notfy_test.iml" afterPath="$PROJECT_DIR$/.idea/modules/notfy_test.iml" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/controller/TestController.java" afterPath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/controller/PageMonitoringController.java" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/ScraulerService.java" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -33,17 +44,62 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ScraulerService.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/ScraulerService.java">
+      <file leaf-file-name="CrawlerService.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/CrawlerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="-119">
+              <caret line="59" column="23" lean-forward="false" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
+              <folding>
+                <element signature="e#4441#4442#0" expanded="true" />
+                <element signature="e#4503#4504#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CrawlResponse.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ScriptResult.java" pinned="false" current-in-tab="false">
+        <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.23/89c977745a81c631f03440b898db80574c8d5cfd/htmlunit-2.23-sources.jar!/com/gargoylesoftware/htmlunit/ScriptResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="JavascriptResult.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/JavascriptResult.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="153">
+              <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
     </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -241,7 +297,8 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$/build.gradle" value="3200145370" />
+        <entry key="$PROJECT_DIR$" value="4652122501000" />
+        <entry key="$PROJECT_DIR$/build.gradle" value="1295656167" />
         <entry key="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" value="2290625707" />
         <entry key="$PROJECT_DIR$/settings.gradle" value="626650367" />
       </map>
@@ -443,6 +500,7 @@
         <entry key="$PROJECT_DIR$/../MyBatisDelivoroTemplateWebGenerator" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../MyBatisDelivoroTemplateWebGenerator/MyBatisDelivoroTemplateWebGenerator" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../MyBatisTemplateWebGenerator" value="PREVIEW" />
+        <entry key="$PROJECT_DIR$" value="RE_IMPORT" />
         <entry key="$PROJECT_DIR$/../SDK-GETNET-V1.0-API-REST-JAVA/sdk-getnet" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../SDK-GETNET-V1.0-API-REST-JAVA/sdk-getnet-achimid" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../Spring Cloud Netflix/Service Discovery/consumer" value="PREVIEW" />
@@ -456,6 +514,24 @@
         <entry key="$PROJECT_DIR$/../lanchonete/lanchonete.root" value="PREVIEW" />
         <entry key="$PROJECT_DIR$/../notify/upntfy" value="PREVIEW" />
       </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/JobsService.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/config/ThymeleafConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlRequest.java" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/model/DocPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/DocPageService.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/repository/DocPageRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlConfig.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/JavascriptResult.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlResponse.java" />
+        <option value="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/CrawlerService.java" />
+      </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -487,61 +563,76 @@
         <subPane>
           <expand>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
-              <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="notfy" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="notfy" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="notfy" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="dto" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="PageNotfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="notfy" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
               <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="notfy" type="462c0819:PsiDirectoryNode" />
               <item name="service" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notfy" type="b2602c69:ProjectViewProjectNode" />
+              <item name="PageNotfy" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="mail" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -553,6 +644,19 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.annotationProcessors" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="br.com.achimid.notfy.dto" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="br.com.achimid.notfy.config" />
+      <recent name="br.com.achimid.notfy.service" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/templates/mail" />
+      <recent name="$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/mail" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -665,21 +769,21 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-11" width="1319" height="780" extended-state="6" />
+    <frame x="48" y="-4" width="1319" height="773" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24981017" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Build" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32985073" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -704,11 +808,146 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/ScraulerService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/config/ThymeleafConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="33" column="56" lean-forward="false" selection-start-line="33" selection-start-column="56" selection-end-line="33" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/config/PageNotfyApplicationConfig.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="20" column="13" lean-forward="false" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+          <caret line="18" column="13" lean-forward="false" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/javax.persistence/javax.persistence-api/2.2/462dff65f6f8bde02ee9d8afe07fe9d50268199c/javax.persistence-api-2.2-sources.jar!/javax/persistence/GeneratedValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="251">
+          <caret line="62" column="18" lean-forward="false" selection-start-line="62" selection-start-column="18" selection-end-line="62" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/repository/DocPageRepository.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="7" column="65" lean-forward="false" selection-start-line="7" selection-start-column="65" selection-end-line="7" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/DocPageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="20" lean-forward="true" selection-start-line="12" selection-start-column="20" selection-end-line="12" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="21" lean-forward="false" selection-start-line="13" selection-start-column="21" selection-end-line="13" selection-end-column="21" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.23/89c977745a81c631f03440b898db80574c8d5cfd/htmlunit-2.23-sources.jar!/com/gargoylesoftware/htmlunit/WebClient.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="163">
+          <caret line="1838" column="58" lean-forward="true" selection-start-line="1838" selection-start-column="58" selection-end-line="1838" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlConfig.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/model/DocPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="42" column="25" lean-forward="false" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="52" lean-forward="false" selection-start-line="22" selection-start-column="52" selection-end-line="22" selection-end-column="52" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/JobsService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/JavascriptResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="25" lean-forward="false" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/net.sourceforge.htmlunit/htmlunit/2.23/89c977745a81c631f03440b898db80574c8d5cfd/htmlunit-2.23-sources.jar!/com/gargoylesoftware/htmlunit/ScriptResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="24" column="19" lean-forward="false" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/dto/CrawlResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="18" lean-forward="false" selection-start-line="10" selection-start-column="18" selection-end-line="10" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/br/com/achimid/notfy/service/CrawlerService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-119">
+          <caret line="59" column="23" lean-forward="false" selection-start-line="59" selection-start-column="23" selection-end-line="59" selection-end-column="23" />
+          <folding>
+            <element signature="e#4441#4442#0" expanded="true" />
+            <element signature="e#4503#4504#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
