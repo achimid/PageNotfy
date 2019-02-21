@@ -1,6 +1,6 @@
 package br.com.achimid.notfy.service;
 
-import br.com.achimid.upntfy.model.MailModel;
+import br.com.achimid.notfy.mail.MailModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;

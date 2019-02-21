@@ -16,7 +16,7 @@ import java.net.URISyntaxException;
 
 @Slf4j
 @RestController("/api/v1/monitor")
-public class PageMonitoringController {
+public class PageMonitorController {
 
     @Autowired
     private CrawlerService crawlerService;

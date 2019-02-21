@@ -17,12 +17,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -71,6 +73,8 @@ public class CrawlerService {
     }
 
     private List<JavascriptResult> executeJavascripCommandList(final HtmlPage page, CrawlRequest cRequest){
+        if(CollectionUtils.isEmpty(cRequest.getScriptCommandList())) return null;
+
         final List<JavascriptResult> results = new ArrayList<>();
         for(String command : cRequest.getScriptCommandList()){
             JavascriptResult result;
@@ -85,6 +89,7 @@ public class CrawlerService {
             }
 
             results.add(result);
+            // https://stackoverflow.com/questions/20245829/how-can-i-request-a-css-attribut-in-htmlunit
         }
         return results;
     }

@@ -12,7 +12,7 @@ public class CrawlRequest {
 
     @NotNull
     private String url;
-    private CrawlConfig config;
+    private CrawlConfig config = new CrawlConfig();
     private String cssQuery;
     private List<String> scriptCommandList;
 
