@@ -10,6 +10,5 @@ public class CrawlConfig {
     private boolean waitForJavascript = true;
     private int javascriptWaitTime = 3000;
     private boolean enableJqueryLib = false;
-    private List<String> scriptCommandList;
 
 }

@@ -9,7 +9,9 @@ import java.util.List;
 public class CrawlResponse {
 
     private String url;
-    private String html;
+    private String htmlFullPage;
+    private String cssQuery;
+    private String htmlQueryReturn;
     private List<JavascriptResult> javascriptResultList;
 
 }

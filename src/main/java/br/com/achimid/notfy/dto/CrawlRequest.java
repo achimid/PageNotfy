@@ -5,6 +5,7 @@ import lombok.NonNull;
 
 import javax.validation.constraints.NotNull;
 import java.net.URI;
+import java.util.List;
 
 @Data
 public class CrawlRequest {
@@ -12,5 +13,7 @@ public class CrawlRequest {
     @NotNull
     private String url;
     private CrawlConfig config;
+    private String cssQuery;
+    private List<String> scriptCommandList;
 
 }

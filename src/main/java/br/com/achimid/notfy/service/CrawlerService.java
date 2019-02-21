@@ -12,6 +12,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
@@ -30,8 +31,6 @@ import java.util.List;
 @Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CrawlerService {
 
-    private final int javaScriptDeplay = 3000; //3segundos
-
     @Autowired
     private WebClient browser;
 
@@ -49,23 +48,34 @@ public class CrawlerService {
         this.injectJqueryLib(page, config);
 
         // Execute javascriptCommands if Exists
-        final List<JavascriptResult> javascriptResults = this.executeJavascripCommandList(page, config);
+        final List<JavascriptResult> javascriptResults = this.executeJavascripCommandList(page, cRequest);
+
+        // Find Using Css Selectors/Query
+        final String fullHtmlPage = page.asXml();
+        String htmlCssQuery = null;
+        if(cRequest.getCssQuery() != null && !cRequest.getCssQuery().isEmpty()){
+            Document htmlDocument = Jsoup.parse(fullHtmlPage);
+            Elements elements = htmlDocument.select(cRequest.getCssQuery());
+            htmlCssQuery = elements.html();
+        }
 
         // Build response object
         CrawlResponse response = new CrawlResponse();
-        response.setHtml(page.asXml());
+        response.setHtmlFullPage(fullHtmlPage);
         response.setJavascriptResultList(javascriptResults);
         response.setUrl(cRequest.getUrl());
+        response.setCssQuery(cRequest.getCssQuery());
+        response.setHtmlQueryReturn(htmlCssQuery);
 
         return response;
     }
 
-    private List<JavascriptResult> executeJavascripCommandList(final HtmlPage page, CrawlConfig config){
+    private List<JavascriptResult> executeJavascripCommandList(final HtmlPage page, CrawlRequest cRequest){
         final List<JavascriptResult> results = new ArrayList<>();
-        for(String command : config.getScriptCommandList()){
+        for(String command : cRequest.getScriptCommandList()){
             JavascriptResult result;
 
-            if(config.isEnableJqueryLib()){
+            if(cRequest.getConfig().isEnableJqueryLib()){
                 result = executeJqueryCommand(page, command);
             }else{
                 final ScriptResult res = page.executeJavaScript(command);
