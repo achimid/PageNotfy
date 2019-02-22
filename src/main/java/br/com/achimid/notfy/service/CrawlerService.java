@@ -4,12 +4,20 @@ import br.com.achimid.notfy.dto.CrawlConfig;
 import br.com.achimid.notfy.dto.CrawlRequest;
 import br.com.achimid.notfy.dto.CrawlResponse;
 import br.com.achimid.notfy.dto.JavascriptResult;
+import com.gargoylesoftware.htmlunit.Page;
 import com.gargoylesoftware.htmlunit.ScriptResult;
 import com.gargoylesoftware.htmlunit.WebClient;
+import com.gargoylesoftware.htmlunit.WebWindow;
+import com.gargoylesoftware.htmlunit.html.DomElement;
+import com.gargoylesoftware.htmlunit.html.HtmlElement;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
+import com.gargoylesoftware.htmlunit.javascript.host.Window;
+import com.gargoylesoftware.htmlunit.javascript.host.css.ComputedCSSStyleDeclaration;
+import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLElement;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
+import net.sourceforge.htmlunit.corejs.javascript.ScriptableObject;
+import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -21,10 +29,7 @@ import org.springframework.util.CollectionUtils;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 
@@ -52,6 +57,26 @@ public class CrawlerService {
         // Execute javascriptCommands if Exists
         final List<JavascriptResult> javascriptResults = this.executeJavascripCommandList(page, cRequest);
 
+
+       //String css = getCss(browser, page.getDocumentElement());
+
+
+        for(DomElement el : page.getElementsByTagName("link")){
+            try {
+                System.out.println(el.getAttribute("href"));
+                Document doc = Jsoup.connect(el.getAttribute("href")).get();
+                DomElement novo = page.createElement("style");
+                novo.setAttribute("type", "text/css");
+                novo.setTextContent(doc.body().text());
+                novo.setNodeValue(doc.body().text());
+                el.getParentNode().appendChild(novo);
+                System.out.println(novo.toString());
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+
+
         // Find Using Css Selectors/Query
         final String fullHtmlPage = page.asXml();
         String htmlCssQuery = null;
@@ -60,6 +85,7 @@ public class CrawlerService {
             Elements elements = htmlDocument.select(cRequest.getCssQuery());
             htmlCssQuery = elements.html();
         }
+
 
         // Build response object
         CrawlResponse response = new CrawlResponse();
@@ -94,6 +120,16 @@ public class CrawlerService {
         return results;
     }
 
+    private String getCss(WebClient browser, HtmlElement element){
+        WebWindow window = browser.getCurrentWindow();
+        ScriptableObject sco = window.getScriptableObject();
+        Window jscript = (Window) sco;
+        HTMLElement htmlElement = (HTMLElement) jscript.makeScriptableFor(element);
+        ComputedCSSStyleDeclaration style = jscript.getComputedStyle(htmlElement, null);
+        System.out.println(style);
+        return style.toString();
+    }
+
     private JavascriptResult executeJqueryCommand(final HtmlPage page, String command){
         JavascriptResult result = new JavascriptResult();
 
@@ -101,15 +137,18 @@ public class CrawlerService {
         this.createResponseContent(page);
 
         // Execute jQuery command and store result into spacific tag
-        final ScriptResult res = page.executeJavaScript("$('#idJqueryReturnTag').html($(" + command + ").clone())");
+        ScriptResult res = page.executeJavaScript("$('#idJqueryReturnTag').html($(" + command + ").clone())");
+        // retry
+        if(res.getJavaScriptResult() == null) res = page.executeJavaScript(command);
 
-        // Create to store jQuery scripts results
-        this.removeResponseContent(page);
 
         // Retrieve return content from page and setting return object
         result.setHtmlResult(page.getElementById("idJqueryReturnTag").asXml());
         result.setScriptCommand(command);
         result.setScriptResult(res);
+
+        // Create to store jQuery scripts results
+        this.removeResponseContent(page);
 
         return result;
     }

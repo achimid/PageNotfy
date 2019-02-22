@@ -24,15 +24,17 @@ public class EmailService {
     private SpringTemplateEngine templateEngine;
 
     @Async
-    public void sendSimpleHtmlMail(MailModel mail) throws MessagingException, IOException {
+    public void sendSimpleHtmlMail(MailModel mail, String html) throws MessagingException, IOException {
         MimeMessage message = emailSender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
        //helper.addAttachment("logo.png", new ClassPathResource("memorynotfound-logo.png"));
 
-        Context context = new Context();
-        context.setVariables(mail.getTemplate().getModel());
-        String html = templateEngine.process(mail.getTemplate().getTemplatePath(), context);
+        if(html == null) {
+            Context context = new Context();
+            context.setVariables(mail.getTemplate().getModel());
+            html = templateEngine.process(mail.getTemplate().getTemplatePath(), context);
+        }
 
         helper.setTo(mail.getTo());
         helper.setText(html, true);
@@ -40,6 +42,11 @@ public class EmailService {
         helper.setFrom(mail.getFrom());
 
         emailSender.send(message);
+    }
+
+    @Async
+    public void sendSimpleHtmlMail(MailModel mail) throws MessagingException, IOException {
+        this.sendSimpleHtmlMail(mail, null);
     }
 
 }

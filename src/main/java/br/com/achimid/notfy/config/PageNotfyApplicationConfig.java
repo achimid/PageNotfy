@@ -28,7 +28,7 @@ public class PageNotfyApplicationConfig {
 
         log.info("Configurando WebCliente");
 
-        browser.getOptions().setCssEnabled(false);
+        browser.getOptions().setCssEnabled(true);
         browser.getOptions().setUseInsecureSSL(true);
         browser.getOptions().setJavaScriptEnabled(true);
         browser.getOptions().setThrowExceptionOnScriptError(false);
