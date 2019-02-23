@@ -1,4 +1,4 @@
-package br.com.achimid.notfy.dto;
+package br.com.achimid.notfy.model;
 
 import com.gargoylesoftware.htmlunit.ScriptResult;
 import lombok.Data;

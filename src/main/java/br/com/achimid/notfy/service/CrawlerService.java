@@ -1,10 +1,9 @@
 package br.com.achimid.notfy.service;
 
-import br.com.achimid.notfy.dto.CrawlConfig;
-import br.com.achimid.notfy.dto.CrawlRequest;
-import br.com.achimid.notfy.dto.CrawlResponse;
-import br.com.achimid.notfy.dto.JavascriptResult;
-import com.gargoylesoftware.htmlunit.Page;
+import br.com.achimid.notfy.model.CrawlConfig;
+import br.com.achimid.notfy.model.CrawlRequest;
+import br.com.achimid.notfy.model.CrawlResponse;
+import br.com.achimid.notfy.model.JavascriptResult;
 import com.gargoylesoftware.htmlunit.ScriptResult;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.WebWindow;
@@ -17,7 +16,6 @@ import com.gargoylesoftware.htmlunit.javascript.host.html.HTMLElement;
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import net.sourceforge.htmlunit.corejs.javascript.ScriptableObject;
-import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
@@ -35,18 +33,23 @@ import java.util.List;
 
 @Slf4j
 @Service
-@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
+//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CrawlerService {
 
     @Autowired
     private WebClient browser;
 
-    public CrawlResponse crawlPage(@NonNull CrawlRequest cRequest) throws IOException{
+    public CrawlResponse crawlPage(@NonNull CrawlRequest cRequest){
 
         final CrawlConfig config = cRequest.getConfig();
 
         // Execute the initial request to the page
-        final HtmlPage page = browser.getPage(cRequest.getUrl().toString());
+        HtmlPage page = null;
+        try {
+            page = browser.getPage(cRequest.getUrl().toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         // Waiting javascript background
         if(config.isWaitForJavascript()) browser.waitForBackgroundJavaScript(config.getJavascriptWaitTime());
@@ -57,25 +60,11 @@ public class CrawlerService {
         // Execute javascriptCommands if Exists
         final List<JavascriptResult> javascriptResults = this.executeJavascripCommandList(page, cRequest);
 
+        // Not Work
+        //String css = getCss(browser, page.getDocumentElement());
 
-       //String css = getCss(browser, page.getDocumentElement());
-
-
-        for(DomElement el : page.getElementsByTagName("link")){
-            try {
-                System.out.println(el.getAttribute("href"));
-                Document doc = Jsoup.connect(el.getAttribute("href")).get();
-                DomElement novo = page.createElement("style");
-                novo.setAttribute("type", "text/css");
-                novo.setTextContent(doc.body().text());
-                novo.setNodeValue(doc.body().text());
-                el.getParentNode().appendChild(novo);
-                System.out.println(novo.toString());
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-
+        // Inject Css files inline
+        // this.injectCssInline(page);
 
         // Find Using Css Selectors/Query
         final String fullHtmlPage = page.asXml();
@@ -96,6 +85,22 @@ public class CrawlerService {
         response.setHtmlQueryReturn(htmlCssQuery);
 
         return response;
+    }
+
+    private void injectCssInline(final HtmlPage page){
+        for(DomElement el : page.getElementsByTagName("link")){
+            final String urlCss = el.getAttribute("href");
+            try {
+                log.info("Consulting css url to inject inline {}", urlCss);
+                Document doc = Jsoup.connect(urlCss).get();
+                DomElement novo = page.createElement("style");
+                novo.setAttribute("type", "text/css");
+                novo.setNodeValue(doc.body().text());
+                el.getParentNode().appendChild(novo);
+            }catch (Exception e){
+                log.error("Ignored css style inline url: {}", urlCss);
+            }
+        }
     }
 
     private List<JavascriptResult> executeJavascripCommandList(final HtmlPage page, CrawlRequest cRequest){

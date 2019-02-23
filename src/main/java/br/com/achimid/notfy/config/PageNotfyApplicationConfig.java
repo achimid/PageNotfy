@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.context.WebApplicationContext;
 
@@ -16,19 +17,19 @@ import org.springframework.web.context.WebApplicationContext;
 @Configuration
 @EnableScheduling
 @EnableCaching
+@EnableAsync
 public class PageNotfyApplicationConfig {
 
     @Value("${webclient.config.timeout}") private int timeout;
     @Value("${webclient.config.javascript.timeout}") private int javascriptTimeout;
 
     @Bean
-    @Scope(value = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
     public WebClient getWebClient(){
         WebClient browser = new WebClient();
 
         log.info("Configurando WebCliente");
 
-        browser.getOptions().setCssEnabled(true);
+        browser.getOptions().setCssEnabled(false);
         browser.getOptions().setUseInsecureSSL(true);
         browser.getOptions().setJavaScriptEnabled(true);
         browser.getOptions().setThrowExceptionOnScriptError(false);

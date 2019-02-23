@@ -28,8 +28,9 @@
         <td bgcolor="#eaeaea" style="padding: 40px 30px 40px 30px;">
             <p>Caro usuário,</p>
             <p>Identificamos uma atualiação no site <a th:text="${site}" th:href="${urlSite}">Site</a></p>
-            <p>Anime: <a th:text="${anime}" th:href="${urlAnime}">Anime Link</a></p>
-            <div th:value="${extraContent}"></div>
+            <div>Conteudo Novo:
+                <div th:value="${newContent}"/>
+            </div>
         </td>
     </tr>
     <tr>
