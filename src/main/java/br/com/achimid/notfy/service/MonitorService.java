@@ -58,9 +58,9 @@ public class MonitorService {
 
         CrawlResponse response = crawlerService.crawlPage(monitorPage.getRequest());
 
-        if(!monitorPage.compareHash(response.getHtml())){
+        //if(!monitorPage.compareHash(response.getHtml())){
             this.sendEmailReturnContentUpdated(response);
-        }
+        //}
     }
 
     private void sendEmailReturnContentUpdated(CrawlResponse response){
