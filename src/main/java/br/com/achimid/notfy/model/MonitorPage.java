@@ -4,9 +4,11 @@ import lombok.Data;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
+import org.springframework.util.CollectionUtils;
+import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
-import java.util.Calendar;
+import java.util.*;
 
 @Data
 @Entity
@@ -20,8 +22,8 @@ public class MonitorPage {
     @OneToOne(optional = false, cascade = {CascadeType.ALL})
     private CrawlRequest request;
 
-    @OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    private CrawlResponse response;
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private Set<CrawlResponse> responseList;
 
     @Lob
     @Column(updatable = false)
@@ -57,6 +59,11 @@ public class MonitorPage {
         return this.hashHtml.equals(DigestUtils.md5Hex(htmlCompare));
     }
 
+    public void addResponse(CrawlResponse response){
+        if(CollectionUtils.isEmpty(responseList)) this.responseList = new HashSet<>();
+        this.responseList.add(response);
+        this.pageHtml = StringUtils.isEmpty(response.getCssQuery()) ? response.getHtmlFullPage() : response.getHtmlQueryReturn();
+    }
 
 
 }
