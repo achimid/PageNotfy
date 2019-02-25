@@ -1,6 +1,7 @@
 package br.com.achimid.notfy.service;
 
 import br.com.achimid.notfy.mail.MailModel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -14,6 +15,7 @@ import javax.mail.internet.MimeMessage;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
+@Slf4j
 @Service
 public class EmailService {
 
@@ -24,7 +26,7 @@ public class EmailService {
     private SpringTemplateEngine templateEngine;
 
     @Async
-    public void sendSimpleHtmlMail(MailModel mail, String html) throws MessagingException, IOException {
+    private void sendSimpleHtmlMail(MailModel mail, String html) throws MessagingException, IOException {
         MimeMessage message = emailSender.createMimeMessage();
 
         MimeMessageHelper helper = new MimeMessageHelper(message, MimeMessageHelper.MULTIPART_MODE_MIXED_RELATED, StandardCharsets.UTF_8.name());
@@ -42,6 +44,7 @@ public class EmailService {
         helper.setFrom(mail.getFrom());
 
         emailSender.send(message);
+        log.info("Email enviado para {} ................................................", mail.getTo());
     }
 
     @Async

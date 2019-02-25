@@ -10,7 +10,7 @@ public class JobsService {
     @Autowired
     private MonitorService monitorService;
 
-    @Scheduled(fixedDelay = 30000)
+    @Scheduled(fixedDelay = 60000)
     public void startMonitoring(){
         monitorService.notifyAllMonitors();
     }

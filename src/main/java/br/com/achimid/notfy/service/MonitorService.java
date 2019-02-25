@@ -11,6 +11,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import java.io.IOException;
@@ -41,9 +42,7 @@ public class MonitorService {
 
         MonitorPage monitorPage = new MonitorPage();
         monitorPage.setRequest(request);
-        monitorPage.setResponse(response);
-
-        monitorPage.setPageHtml(StringUtils.isEmpty(response.getCssQuery()) ? response.getHtmlFullPage() : response.getHtmlQueryReturn());
+        monitorPage.addResponse(response);
 
         this.save(monitorPage);
     }
@@ -53,13 +52,16 @@ public class MonitorService {
         pages.forEach(m -> notifyMonitorExecute(m));
     }
 
+    @Transactional
     public void notifyMonitorExecute(MonitorPage monitorPage){
         log.info("Iniciando monitoramento... {}", monitorPage.getRequest().getUrl());
 
         CrawlResponse response = crawlerService.crawlPage(monitorPage.getRequest());
 
-        if(!monitorPage.compareHash(response.getHtml())){
+        if(!monitorPage.compareHash(response.getHtml())){ // Response html is different from current hmlt
+            monitorPage.addResponse(response);
             this.sendEmailReturnContentUpdated(response);
+            this.save(monitorPage); // Update hash with new html response
         }
     }
 
