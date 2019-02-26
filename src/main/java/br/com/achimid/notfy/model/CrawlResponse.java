@@ -29,6 +29,9 @@ public class CrawlResponse {
     @Transient
     private List<JavascriptResult> javascriptResultList;
 
+    // milliseconds
+    private Long executionTime;
+
     public String getHtml(){
         return StringUtils.isEmpty(htmlQueryReturn) ? htmlFullPage : htmlQueryReturn;
     }

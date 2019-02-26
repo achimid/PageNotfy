@@ -35,7 +35,7 @@ public class MonitorServiceTest {
     public void testCreateMonitor_Success(){
         CrawlResponse resp = Stub.getCResponse();
 
-        MonitorPage monitorPage = monitorService.createMonitor(Stub.getCRequest());
+        MonitorPage monitorPage = monitorService.createMonitor(Stub.getMonitorPage());
         monitorService.notifyMonitorExecute(monitorPage);
         monitorService.notifyMonitorExecute(monitorPage);
         monitorService.notifyMonitorExecute(monitorPage);

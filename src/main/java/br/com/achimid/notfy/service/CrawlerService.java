@@ -29,6 +29,7 @@ import org.springframework.web.context.WebApplicationContext;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 @Slf4j
@@ -40,6 +41,8 @@ public class CrawlerService {
     private WebClient browser;
 
     public CrawlResponse crawlPage(@NonNull CrawlRequest cRequest){
+
+        final long startTime = System.currentTimeMillis();
 
         final CrawlConfig config = cRequest.getConfig();
 
@@ -75,6 +78,7 @@ public class CrawlerService {
             htmlCssQuery = elements.html();
         }
 
+        final long endTime = System.currentTimeMillis();
 
         // Build response object
         CrawlResponse response = new CrawlResponse();
@@ -82,6 +86,9 @@ public class CrawlerService {
         response.setJavascriptResultList(javascriptResults);
         response.setUrl(cRequest.getUrl());
         response.setHtmlQueryReturn(htmlCssQuery);
+        response.setExecutionTime(endTime - startTime);
+
+        log.info("Tempo de Execução: {} segundos", TimeUnit.MILLISECONDS.toSeconds(endTime - startTime));
 
         return response;
     }

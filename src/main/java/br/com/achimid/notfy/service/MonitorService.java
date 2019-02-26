@@ -37,10 +37,15 @@ public class MonitorService {
         return repository.save(monitorPage);
     }
 
-    public MonitorPage createMonitor(CrawlRequest request) {
+    public MonitorPage createMonitor(@NonNull MonitorPage monitorPage) {
+        CrawlRequest request = monitorPage.getRequest();
+        if(request == null) {
+            request = new CrawlRequest();
+            request.setUrl(monitorPage.getNotificationInfo().getUrlMonitor());
+        }
+
         CrawlResponse response = crawlerService.crawlPage(request);
 
-        MonitorPage monitorPage = new MonitorPage();
         monitorPage.setRequest(request);
         monitorPage.addResponse(response);
 

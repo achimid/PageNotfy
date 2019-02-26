@@ -2,9 +2,9 @@ package br.com.achimid.notfy.util;
 
 import br.com.achimid.notfy.mail.GenericMailTemplate;
 import br.com.achimid.notfy.mail.MailModel;
-import br.com.achimid.notfy.model.CrawlConfig;
-import br.com.achimid.notfy.model.CrawlRequest;
-import br.com.achimid.notfy.model.CrawlResponse;
+import br.com.achimid.notfy.model.*;
+
+import javax.management.monitor.Monitor;
 
 public class Stub {
 
@@ -40,6 +40,16 @@ public class Stub {
         return config;
     }
 
+    public static NotificationInfo getNotificationInfo(){
+        NotificationInfo n = new NotificationInfo();
+
+        n.setEmail("achimid@hotmail.com");
+        n.setUrlMonitor(url);
+        n.setWebsiteName("HorribleSubs");
+
+        return n;
+    }
+
     public static CrawlRequest getCRequest(){
         return getCRequest(null);
     }
@@ -62,6 +72,15 @@ public class Stub {
         res.setUrl(url);
 
         return res;
+    }
+
+    public static MonitorPage getMonitorPage(){
+        MonitorPage m = new MonitorPage();
+
+        m.setNotificationInfo(getNotificationInfo());
+        m.setRequest(getCRequest());
+
+        return m;
     }
 
 }

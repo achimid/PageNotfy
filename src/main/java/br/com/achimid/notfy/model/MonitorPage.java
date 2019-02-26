@@ -5,7 +5,6 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.springframework.util.CollectionUtils;
-import org.springframework.util.StringUtils;
 
 import javax.persistence.*;
 import java.util.*;
@@ -18,6 +17,9 @@ public class MonitorPage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @OneToOne(optional = false, cascade = {CascadeType.ALL})
+    private NotificationInfo notificationInfo;
 
     @OneToOne(optional = false, cascade = {CascadeType.ALL})
     private CrawlRequest request;
