@@ -26,10 +26,8 @@ public class MonitorPage {
     private Set<CrawlResponse> responseList;
 
     @Lob
-    @Column(updatable = false)
     private String pageHtml;
 
-    @Column(updatable = false)
     private String hashHtml;
 
     @Temporal(value = TemporalType.TIMESTAMP)
@@ -62,7 +60,7 @@ public class MonitorPage {
     public void addResponse(CrawlResponse response){
         if(CollectionUtils.isEmpty(responseList)) this.responseList = new HashSet<>();
         this.responseList.add(response);
-        this.pageHtml = StringUtils.isEmpty(response.getCssQuery()) ? response.getHtmlFullPage() : response.getHtmlQueryReturn();
+        this.pageHtml = response.getHtml();
     }
 
 

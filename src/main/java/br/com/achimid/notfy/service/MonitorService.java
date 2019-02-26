@@ -37,7 +37,7 @@ public class MonitorService {
         return repository.save(monitorPage);
     }
 
-    public void createMonitor(CrawlRequest request) {
+    public MonitorPage createMonitor(CrawlRequest request) {
         CrawlResponse response = crawlerService.crawlPage(request);
 
         MonitorPage monitorPage = new MonitorPage();
@@ -45,6 +45,8 @@ public class MonitorService {
         monitorPage.addResponse(response);
 
         this.save(monitorPage);
+
+        return monitorPage;
     }
 
     public void notifyAllMonitors(){
@@ -80,13 +82,15 @@ public class MonitorService {
 
         m.setTemplate(template);
 
-        try {
+        log.info("Enviando notificação para {} ....................................", m.getTo());
+
+        /*try {
             emailService.sendSimpleHtmlMail(m);
         } catch (MessagingException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
 }

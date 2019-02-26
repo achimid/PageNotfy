@@ -81,7 +81,6 @@ public class CrawlerService {
         response.setHtmlFullPage(fullHtmlPage);
         response.setJavascriptResultList(javascriptResults);
         response.setUrl(cRequest.getUrl());
-        response.setCssQuery(cRequest.getCssQuery());
         response.setHtmlQueryReturn(htmlCssQuery);
 
         return response;

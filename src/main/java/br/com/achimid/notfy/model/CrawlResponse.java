@@ -14,6 +14,7 @@ public class CrawlResponse {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Integer id;
 
     @NotNull
@@ -21,7 +22,6 @@ public class CrawlResponse {
 
     @Lob
     private String htmlFullPage;
-    private String cssQuery;
 
     @Lob
     private String htmlQueryReturn;
@@ -30,7 +30,7 @@ public class CrawlResponse {
     private List<JavascriptResult> javascriptResultList;
 
     public String getHtml(){
-        return StringUtils.isEmpty(cssQuery) ? htmlFullPage : htmlQueryReturn;
+        return StringUtils.isEmpty(htmlQueryReturn) ? htmlFullPage : htmlQueryReturn;
     }
 
 }
