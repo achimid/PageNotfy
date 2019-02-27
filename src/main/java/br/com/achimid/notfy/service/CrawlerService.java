@@ -34,7 +34,6 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 @Service
-//@Scope(value = WebApplicationContext.SCOPE_SESSION, proxyMode = ScopedProxyMode.TARGET_CLASS)
 public class CrawlerService {
 
     @Autowired

@@ -37,7 +37,7 @@ public class MonitorService {
         return repository.save(monitorPage);
     }
 
-    public MonitorPage createMonitor(@NonNull MonitorPage monitorPage) {
+    public MonitorPage createMonitor(MonitorPage monitorPage) {
         CrawlRequest request = monitorPage.getRequest();
         if(request == null) {
             request = new CrawlRequest();
